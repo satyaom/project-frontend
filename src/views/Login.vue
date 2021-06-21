@@ -1,38 +1,38 @@
 <template>
-  <div id="app">
-    <form @submit.prevent="login">
-      <input v-model="email" placeholder="email">
-      <input v-model="password" placeholder="password" type="password">
-      <input type="submit" value="log in">
-    </form>
-  </div>
+    <div>    
+        <h2>Login</h2>    
+        <form v-on:submit="login">    
+            <input type="text" name="email" id="email"/><br>    
+            <input type="password" name="password" id="pass"/><br>    
+            <input type="submit" value="Login" />    
+        </form>    
+    </div>
 </template>
 
 <script>
-export default {
-  name: "Login",
-  data() {
-    return {
-      email: "",
-      password: ""
-    };
-  },
-  methods: {
-    async login() {
-      const { email, password } = this;
-      const res = await fetch(
-        "https://cryptyy.herokuapp.com/login",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json"
-          },
-          body: JSON.stringify({ email, password })
-        }
-      );
-      const data = await res.json();
-      console.log(data);
+    import router from "../router"    
+    import axios from "axios"    
+    export default {    
+        name: "Login",    
+        methods: {    
+            login: (e) => {    
+                e.preventDefault()      
+                let login = () => {    
+                    let data = {    
+                        email: document.getElementById('email').value,    
+                        password: document.getElementById('pass').value,    
+                    }    
+                    axios.post("https://cryptyy.herokuapp.com/login", data, {withCredentials: true})    
+                        .then((response) => {    
+                            console.log("Logged in")    
+                            router.push("/dashboard")    
+                        })    
+                        .catch((errors) => {    
+                            console.log(errors)    
+                        })    
+                }    
+                login()    
+            }    
+        }    
     }
-  }
-};
 </script>
