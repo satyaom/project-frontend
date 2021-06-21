@@ -1,4 +1,4 @@
-# events-app
+# project-frontend
 
 ## Project setup
 ```
