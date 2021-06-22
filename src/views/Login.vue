@@ -1,4 +1,8 @@
 <template>
+    <div id="nav">
+    <router-link to="/">Home</router-link> |
+    <router-link to="/login">Login</router-link>
+  </div>
     <div>    
         <h2>Login</h2>    
         <form v-on:submit="login">    
@@ -11,10 +15,20 @@
 
 <script>
     import router from "../router"    
-    import axios from "axios"    
+    import axios from "axios"
+    
     export default {    
         name: "Login",    
-        methods: {    
+        methods: {  
+            check : function() {
+                axios.get('https://cryptyy.herokuapp.com', {withCredentials:true})
+                .then((response) => {
+                    router.push("/dashboard")
+                })
+                .catch((errors) => {
+                    console.log(errors);
+                })
+            },
             login: (e) => {    
                 e.preventDefault()      
                 let login = () => {    
@@ -23,7 +37,7 @@
                         password: document.getElementById('pass').value,    
                     }    
                     axios.post("https://cryptyy.herokuapp.com/login", data, {withCredentials: true})    
-                        .then((response) => {    
+                        .then((response) => { 
                             console.log("Logged in")    
                             router.push("/dashboard")    
                         })    
@@ -33,6 +47,9 @@
                 }    
                 login()    
             }    
+        },
+        mounted() {    
+            this.check()    
         }    
     }
 </script>

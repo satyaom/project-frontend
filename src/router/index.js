@@ -26,15 +26,20 @@ const routes = [
         component: () => import(/* webpackChunkName: "Overview" */ '../views/Overview.vue')
       },  
       {
-      path: '/messages',
-      name: 'Message',
-      component: () => import(/* webpackChunkName: "Messages" */ '../views/Messages.vue')
+      path: '/files',
+      name: 'Files',
+      component: () => import(/* webpackChunkName: "Messages" */ '../views/Files.vue')
       },
       {
-      path: '/profile',
-      name: 'Profile',
-      component: () => import(/* webpackChunkName: "Profile" */ '../views/Profile.vue')
+      path: '/uploadFile',
+      name: 'UploadFile',
+      component: () => import(/* webpackChunkName: "Profile" */ '../views/Uploadfile.vue')
       },
+      {
+        path: '/changeFile',
+        name: 'ChangeFile',
+        component: () => import(/* webpackChunkName: "Settings" */ '../views/Changefile.vue')
+      }
     ],  
   },
 

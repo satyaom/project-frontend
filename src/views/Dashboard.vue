@@ -8,13 +8,31 @@
 </template>
 
 <script>
+import router from "../router"    
+import axios from "axios"
+
 import Sidebar from '../components/Sidebar'
 export default {
     name: 'home',
 
     components: {
         Sidebar
-    }
+    },
+    methods: {    
+            check: function() {    
+               axios.get('https://cryptyy.herokuapp.com', {withCredentials:true})
+                .then((response) => {
+                    console.log(response.data.firstname);
+                })
+                .catch((errors) => {
+                    console.log(errors.message);
+                    router.push("/login")
+                })
+            }    
+        },    
+        mounted() {    
+            this.check()    
+        }
 }
 </script>
 

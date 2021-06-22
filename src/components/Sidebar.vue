@@ -1,7 +1,7 @@
 <template>
     <div class="sidebar">
         <div class="title">
-            Simple Sidebar
+            {{user}}
         </div>
         <div class="menu-items">
             <router-link to="/dashboard" active-class="active" tag="button" exact class="side-btn">
@@ -9,14 +9,19 @@
                     Overview
                 </div>
             </router-link>
-            <router-link to="/messages" active-class="active" tag="button" exact class="side-btn">
+            <router-link to="/files" active-class="active" tag="button" exact class="side-btn">
                 <div class="link-container">
-                    Messages
+                    Files
                 </div>
             </router-link>
-            <router-link to="/profile" active-class="active" tag="button" exact class="side-btn">
+            <router-link to="/uploadFile" active-class="active" tag="button" exact class="side-btn">
                 <div class="link-container">
-                    Profile
+                    Upload File
+                </div>
+            </router-link>
+            <router-link to="/changeFile" active-class="active" tag="button" exact class="side-btn">
+                <div class="link-container">
+                    Change File
                 </div>
             </router-link>
         </div>
@@ -24,8 +29,30 @@
 </template>
 
 <script>
+import router from "../router"    
+import axios from "axios"
 export default {
-    
+    name: "Dashboard",    
+    data() {    
+        return {    
+            user :''
+        }    
+    },    
+    methods: {    
+        check: function() {    
+            axios.get('https://cryptyy.herokuapp.com', {withCredentials:true})
+            .then((response) => {
+                    this.user = response.data.firstname
+            })
+            .catch((errors) => {
+                console.log(errors.message);
+                router.push("/login")
+            })
+        }    
+    },    
+    mounted() {    
+        this.check()    
+    }    
 }
 </script>
 
