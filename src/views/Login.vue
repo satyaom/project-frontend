@@ -16,7 +16,7 @@
 <script>
     import router from "../router"    
     import axios from "axios"
-    
+    import {putDataDB} from '../services/store_files'
     export default {    
         name: "Login",    
         methods: {  
@@ -37,18 +37,19 @@
                         password: document.getElementById('pass').value,    
                     }    
                     axios.post("https://cryptyy.herokuapp.com/login", data, {withCredentials: true})    
-                        .then((response) => { 
+                        .then(async (response) => { 
                             console.log("Logged in")    
+                            await putDataDB()
                             router.push("/dashboard")    
                         })    
                         .catch((errors) => {    
-                            console.log(errors)    
+                            console.log(errors.data.message)    
                         })    
                 }    
                 login()    
             }    
         },
-        mounted() {    
+        created() {    
             this.check()    
         }    
     }

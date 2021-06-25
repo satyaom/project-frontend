@@ -1,17 +1,30 @@
 <template>
-    <div class="messages">
-        Messages
+    
+    <div v-for="item in qr" v-bind:key="item"> 
+        <img :src="item" alt='not loaded' width="150" height="150"/>
     </div>
 </template>
 
 <script>
-    export default {
-        
+import {getDataDB} from '../services/store_files'
+export default {
+    name: "file",    
+    data() {    
+        return {
+            qr : [],
+        }    
+    },    
+    async created() {
+        let files = await getDataDB();
+        for(let i = 0; i < files.length; i++){
+            await this.qr.push(files[i].qrcode);
+        }
     }
+}
 </script>
 
 <style scoped>
-.messages {
+.messages { 
     display: flex;
     justify-content: center;
     align-items: center;

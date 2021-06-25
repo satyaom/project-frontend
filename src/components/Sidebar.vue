@@ -25,12 +25,15 @@
                 </div>
             </router-link>
         </div>
+        <button @click="logout">Logout</button>
     </div>
 </template>
 
 <script>
 import router from "../router"    
 import axios from "axios"
+import { deleteDB } from '../services/store_files'
+
 export default {
     name: "Dashboard",    
     data() {    
@@ -48,9 +51,22 @@ export default {
                 console.log(errors.message);
                 router.push("/login")
             })
+        },
+        logout : function() {
+            axios.get('https://cryptyy.herokuapp.com/logout', {withCredentials:true})
+            .then((response) => {
+                console.log(response.data.message);
+                localStorage.clear();
+                deleteDB()
+                router.push('/')
+            })
+            .catch((errors) => {
+                console.log(errors.message);
+                router.push("/login")
+            })
         }    
     },    
-    mounted() {    
+    created() {    
         this.check()    
     }    
 }
