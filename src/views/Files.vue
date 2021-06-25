@@ -7,6 +7,7 @@
         <h4>NAME: {{item.name}}</h4>
         <h4>TAMPERED: {{item.tampered}}</h4>
         <h4>FILE TYPE: {{item.filetype}}</h4> 
+        <a :href="item.file" target="_blank">View File 📩</a>
         </div>
     </div>
     </div>
@@ -20,12 +21,27 @@ export default {
         return {
             doc : [],
         }    
+    },
+    methods : {
+    fileLink(file) {
+        window.open(`${file}`);
     },    
+    arrayBufferToBase64(buffer) {
+        var binary = '';
+        var bytes = [].slice.call(new Uint8Array(buffer));
+        bytes.forEach((b) => binary += String.fromCharCode(b));
+        return window.btoa(binary);
+        }
+    }, 
     async created() {
         let files = await getDataDB();
         for(let i = 0; i < files.length; i++){
+            let doc_base64 = this.arrayBufferToBase64(files[i].file)
+            let str_file = "data:"+files[i].filetype+";base64,"+doc_base64;
+            files[i].file = str_file
             await this.doc.push(files[i]);
         }
+        console.log(files[0].file)
     }
 }
 </script>

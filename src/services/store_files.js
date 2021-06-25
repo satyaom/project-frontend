@@ -19,7 +19,7 @@ var putDataDB = async()=>{
         qrcode: element.qr.data,
         tampered: tamperlist[index],
         name: element.postFile.name,
-        file: element.postFile.data,
+        file: element.postFile.data.data,
         filetype: element.postFile.contentType
       }).then(()=>{
         console.log('done');
