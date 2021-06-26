@@ -53,12 +53,8 @@ var addDataDB = async(post) =>{
 
 var getDataDB = async () => {
   let file_list = []
-  if(filename_list.length == 0) {
-    await putDataDB()
-    console.log(filename_list)
-  }
+  
   for(let i = 0; i < filename_list.length; i++) {
-    console.log(filename_list[i])
     let doc = await db.upload.get(filename_list[i]);
     await file_list.push(doc);
   }
