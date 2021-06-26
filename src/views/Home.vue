@@ -1,8 +1,6 @@
 <template>
-  <div id="nav">
-    <router-link to="/">Home</router-link> |
-    <router-link to="/login">Login</router-link>
-  </div>
+  <button @click="loginPage">Login</button>
+  <button @click="signupPage">Sign Up</button>
   <div class="home">
     <img alt="Vue logo" src="../assets/logo.png">
     <HelloWorld msg="Welcome to Your Vue.js App"/>
@@ -12,11 +10,19 @@
 <script>
 // @ is an alias to /src
 import HelloWorld from '@/components/HelloWorld.vue'
-
+import router from '../router/index';
 export default {
   name: 'Home',
   components: {
     HelloWorld
+  },
+  methods:{
+    loginPage() {
+      router.push('/login');
+    },
+    signupPage() {
+      router.push('/signup');
+    }
   }
 }
 </script>

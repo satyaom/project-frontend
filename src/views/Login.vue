@@ -1,16 +1,15 @@
 <template>
-    <div id="nav">
-    <router-link to="/">Home</router-link> |
-    <router-link to="/login">Login</router-link>
-  </div>
+    <button @click="homePage">Home</button>
     <div>    
         <h2>Login</h2>    
         <form v-on:submit="login">    
-            <input type="text" name="email" id="email"/><br>    
-            <input type="password" name="password" id="pass"/><br>    
+            Email: <input type="text" name="email" id="email"/><br><br>    
+            Password: <input type="password" name="password" id="pass"/><br><br>    
             <input type="submit" value="Login" />    
         </form>    
     </div>
+    <br>
+    <button @click="signupPage">Register</button>
 </template>
 
 <script>
@@ -19,7 +18,13 @@
     import {putDataDB} from '../services/store_files'
     export default {    
         name: "Login",    
-        methods: {  
+        methods: {
+            homePage() {
+                router.push('/')
+            },
+            signupPage() {
+                router.push('/signup');
+            },  
             check : function() {
                 axios.get('https://cryptyy.herokuapp.com', {withCredentials:true})
                 .then((response) => {
