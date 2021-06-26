@@ -12,6 +12,7 @@ import router from "../router"
 import axios from "axios"
 
 import Sidebar from '../components/Sidebar'
+import {putDataDB} from '../services/store_files'
 export default {
     name: 'home',
 
@@ -21,8 +22,9 @@ export default {
     methods: {    
             check: function() {    
                axios.get('https://cryptyy.herokuapp.com', {withCredentials:true})
-                .then((response) => {
+                .then(async (response) => {
                     console.log(response.data.firstname);
+                    await putDataDB();
                 })
                 .catch((errors) => {
                     console.log(errors.message);

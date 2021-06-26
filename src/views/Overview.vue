@@ -9,7 +9,7 @@
 <script>
 import router from "../router"    
 import axios from "axios"
-import {putDataDB} from '../services/store_files'
+
 export default {
     name: "overview",    
     data() {    
@@ -26,7 +26,6 @@ export default {
                     this.pkey = response.data.public_key
                     localStorage.tokenid = response.data.token_id
                     localStorage.pkey = response.data.public_key
-                    putDataDB()
             })
             .catch((errors) => {
                 console.log(errors.message);

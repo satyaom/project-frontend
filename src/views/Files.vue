@@ -54,6 +54,8 @@ export default {
   box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
   transition: 0.3s;
   width: 25%;
+  height: 50%;
+  overflow: auto;
 }
 
 .card:hover {
@@ -61,7 +63,7 @@ export default {
 }
 
 .container {
-    overflow: auto;
+    
   padding: 2px 16px;
 }
 .messages {
