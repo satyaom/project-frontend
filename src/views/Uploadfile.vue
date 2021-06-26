@@ -13,7 +13,7 @@
 
 <script>
 import axios from 'axios';
-import {putDataDB} from '../services/store_files'
+import {addDataDB} from '../services/store_files'
     export default {
         name: 'uploadFile',
         data() {
@@ -30,8 +30,8 @@ import {putDataDB} from '../services/store_files'
                 formData.append("postFile", this.selectedFile);
                 console.log(this.selectedFile);
                 axios.post('https://cryptyy.herokuapp.com/upload', formData, {withCredentials: true})
-                .then(async ()=>{
-                    await putDataDB();
+                .then( async (response)=>{
+                    await addDataDB(response)
                     console.log('uploaded')
                 })
                 .catch((e)=>{

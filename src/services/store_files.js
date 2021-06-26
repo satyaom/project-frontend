@@ -30,6 +30,25 @@ var putDataDB = async()=>{
   })
 }
 
+var addDataDB = async(post) =>{
+  await db.open()
+  let obj = post.data
+  let tamper = obj.tampered
+  let element =  obj.fileinfo
+  filename_list.push(element.fileName);
+  await db.upload.put({ 
+    fileid: element.fileName, 
+    qrcode: element.qr.data,
+    tampered: tamper,
+    name: element.postFile.name,
+    file: element.postFile.data.data,
+    filetype: element.postFile.contentType
+  }).then(()=>{
+    console.log('document fetched');
+  }).catch((e)=>{
+    console.log(e.message)
+  });
+}
 
 
 var getDataDB = async () => {
@@ -59,4 +78,4 @@ var deleteDB= async ()=> {
 
 
 
-export {deleteDB, putDataDB, getDataDB};
+export {deleteDB, putDataDB, getDataDB, addDataDB};
