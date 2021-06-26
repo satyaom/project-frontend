@@ -41,7 +41,6 @@ export default {
             files[i].file = str_file
             await this.doc.push(files[i]);
         }
-        console.log(files[0].file)
     }
 }
 </script>

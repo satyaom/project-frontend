@@ -1,11 +1,49 @@
 <template>
-    <div class="settings">
-        Settings
-    </div>
+     <div>
+        <h2>Number</h2> 
+        <input type="text" name="Number" id="num">
+        <h2>Upload Image</h2>
+        <div> 
+            <input type="file" @change="onFileChange"/> 
+            <button @click="onFileUpload"> 
+              Upload! 
+            </button> 
+        </div>
+      </div>
 </template>
 
 <script>
+    import axios from 'axios';
+    import {putDataDB} from '../services/store_files'
+
     export default {
+        name: 'uploadFile',
+        data() {
+            return {
+                selectedFile:'',
+                number:'',
+            }
+        },
+        methods: {
+            onFileChange(event) {
+                this.selectedFile = event.target.files[0]
+            },
+            onFileUpload() {
+                this.number = document.getElementById('num').value;
+                const formData = new FormData();
+                formData.append("postFile", this.selectedFile);
+                formData.append("number", this.number);
+                console.log(this.selectedFile);
+                axios.post('https://cryptyy.herokuapp.com/updateData', formData, {withCredentials: true})
+                .then(async ()=>{
+                    await putDataDB();
+                    console.log('uploaded with no.')
+                })
+                .catch((e)=>{
+                    console.log(e.message);
+                });
+            }
+        }
         
     }
 </script>
