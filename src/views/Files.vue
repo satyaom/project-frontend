@@ -4,21 +4,24 @@
     <h4 style="margin-left:425px">{{status}}</h4>
          <div class="loader"></div> 
     </div>
-    <div v-for="item in doc" v-bind:key="item" class="card"> 
+    <div v-else v-for="item in doc" v-bind:key="item" class="card"> 
         <img :src="item.qrcode" alt='not loaded' width="150" height="150"/>
         <div class="container">
         <h4>FILE ID: {{item.fileid}}</h4>
         <h4>NAME: {{item.name}}</h4>
-        <h4>TAMPERED: {{item.tampered}}</h4>
         <h4>FILE TYPE: {{item.filetype}}</h4> 
-        <a :href="item.file" target="_blank">View File 📩</a>
+        <a :href="item.file" target="_blank">View File 📩</a><br><br>
+        <button @click="deleteDoc(item.fileid)">Delete</button>
+        <h4 v-if="item.tampered">❌</h4>
+        <h4 v-else>✅</h4>
         </div>
     </div>
     </div>
 </template>
 
 <script>
-import {putDataDB, getDataDB, isPutData} from '../services/store_files'
+import axios from 'axios';
+import {putDataDB, getDataDB, isPutData, deleteFile} from '../services/store_files'
 import {st} from '../views/Changefile.vue';
 
 export default {
@@ -31,6 +34,32 @@ export default {
         }    
     },
     methods : {
+    async deleteDoc (fileid) {
+      this.loading_status = true;
+      this.status = 'Deleting File';
+      var body={
+        fileId: fileid
+      }
+      await axios.post('https://cryptyy.herokuapp.com/deleteFile', body, {withCredentials:true})
+      .then((response)=>{
+        console.log(response.data.message);
+      })
+      .catch((e)=>{
+        console.log(e.message);
+      });
+      await deleteFile(fileid);
+      this.status = 'Fetching File';
+      this.doc.length = 0;
+      let files = await getDataDB()
+      for(let i = 0; i < files.length; i++){
+          let doc_base64 = this.arrayBufferToBase64(files[i].file)
+          let str_file = "data:"+files[i].filetype+";base64,"+doc_base64;
+          files[i].file = str_file
+          await this.doc.push(files[i]);
+      }
+      this.loading_status = false
+      this.status = ''
+    },
     fileLink(file) {
         window.open(`${file}`);
     },    
@@ -48,7 +77,7 @@ export default {
             await putDataDB()
             st.state = false
         }
-        if(isPutData()) {
+        if(isPutData() || this.doc.length == 0) {
             this.status = 'Verifying Files'
             await putDataDB()
         } 
@@ -88,14 +117,14 @@ export default {
 }
 
 .card {
-  margin-top: 16px;
-  margin-right: 16px;
-  margin-left: 16px;
-  margin-bottom: 16px;
+  margin-top: 8px;
+  margin-right: 8px;
+  margin-left: 8px;
+  margin-bottom: 8px;
   box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
   transition: 0.3s;
-  width: 25%;
-  height: 50%;
+  width: 20vw;
+  height: 51vh;
   overflow: auto;
 }
 
@@ -104,7 +133,6 @@ export default {
 }
 
 .container {
-    
   padding: 2px 16px;
 }
 .messages {
@@ -114,7 +142,7 @@ export default {
   padding: 0 4px;
     text-align: center;
     font-weight: 600;
-    height: 900px;
+    height: 95vh;
     overflow:auto;
     
 }

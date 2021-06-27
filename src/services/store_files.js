@@ -66,6 +66,19 @@ var getDataDB = async () => {
   return file_list;
 }
 
+var deleteFile=async(fileid) => {
+  await db.upload.delete(fileid)
+  .then(()=>{
+    var index = filename_list.indexOf(fileid);
+    if (index !== -1) {
+      filename_list.splice(index, 1);
+    }
+    console.log('file deleted');
+  }).catch((e)=>{
+    console.log(e.message);
+  });
+}
+
 var deleteDB= async ()=> {
   filename_list.length = 0
   await db.upload.clear().then(()=>{
@@ -78,4 +91,4 @@ var deleteDB= async ()=> {
 
 
 
-export {deleteDB, putDataDB, getDataDB, addDataDB, isPutData};
+export {deleteDB, putDataDB, getDataDB, addDataDB, isPutData, deleteFile};
