@@ -1,6 +1,9 @@
 <template>
-    <h4>{{status}}</h4>
     <div class="messages">
+    <h4>{{status}}</h4>
+    <div v-if="loading_status">
+         <div class="loader"></div> 
+    </div>
     <div v-for="item in doc" v-bind:key="item" class="card"> 
         <img :src="item.qrcode" alt='not loaded' width="150" height="150"/>
         <div class="container">
@@ -15,13 +18,16 @@
 </template>
 
 <script>
-import {getDataDB} from '../services/store_files'
+import {putDataDB, getDataDB} from '../services/store_files'
+import {st} from '../views/Changefile.vue';
+
 export default {
-    name: "file",    
+    name: "file",
     data() {    
         return {
+            loading_status: true,
             doc : [],
-            status: 'Please Wait',
+            status: ''
         }    
     },
     methods : {
@@ -36,6 +42,14 @@ export default {
         }
     }, 
     async created() {
+        if(st.state) {
+            this.status = 'Verifying Files'
+            this.loading_status = true
+            await putDataDB()
+
+        }
+        st.state = false
+        this.status = 'Fetching Files'
         let files = await getDataDB();
         for(let i = 0; i < files.length; i++){
             let doc_base64 = this.arrayBufferToBase64(files[i].file)
@@ -43,12 +57,33 @@ export default {
             files[i].file = str_file
             await this.doc.push(files[i]);
         }
-        this.status = ""
+        this.status = ''
+        this.loading_status = false;
+        
     }
 }
 </script>
 
 <style scoped>
+
+.loader {
+  border: 16px solid #f3f3f3; /* Light grey */
+  border-top: 16px solid #3498db; /* Blue */
+  border-radius: 50%;
+  width: 120px;
+  height: 120px;
+  animation: spin 2s linear infinite;
+    justify-content: center;
+    align-items: center;
+ 
+
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
 .card {
   margin-top: 16px;
   margin-right: 16px;

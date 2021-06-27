@@ -15,7 +15,7 @@
 
 <script>
     import axios from 'axios';
-    import {putDataDB} from '../services/store_files'
+    let st= {state: false}
 
     export default {
         name: 'uploadFile',
@@ -23,7 +23,7 @@
             return {
                 selectedFile:'',
                 number:'',
-                status: '',
+                status: ''
             }
         },
         methods: {
@@ -39,8 +39,7 @@
                 console.log(this.selectedFile);
                 axios.post('https://cryptyy.herokuapp.com/updateData', formData, {withCredentials: true})
                 .then(async ()=>{
-                    this.status = 'Fetching and verifying the data'
-                    await putDataDB();
+                    st.state = true
                     this.status = 'File Uploaded'
                     console.log('uploaded with no.')
                 })
@@ -48,9 +47,10 @@
                     console.log(e.message);
                 });
             }
-        }
-        
+        },
+
     }
+    export{st}
 </script>
 
 <style scoped>

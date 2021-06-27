@@ -3,8 +3,10 @@ import axios from "axios"
 
 var filename_list = []
 
+var state = ''
 
 var putDataDB = async()=>{
+  state = 'Fetching Data Please Wait'
   await db.open()
   filename_list.length = 0;
   await axios.get('https://cryptyy.herokuapp.com/getUploads', {withCredentials: true})
@@ -52,6 +54,9 @@ var addDataDB = async(post) =>{
 
 
 var getDataDB = async () => {
+  if(filename_list.length == 0)
+    await putDataDB()
+  state = 'Please Wait'
   let file_list = []
   
   for(let i = 0; i < filename_list.length; i++) {
@@ -74,4 +79,4 @@ var deleteDB= async ()=> {
 
 
 
-export {deleteDB, putDataDB, getDataDB, addDataDB};
+export {deleteDB, putDataDB, getDataDB, addDataDB, state};
