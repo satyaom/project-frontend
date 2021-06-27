@@ -25,6 +25,7 @@ export default {
                 .then(async (response) => {
                     console.log(response.data.firstname);
                     // await putDataDB();
+                    router.push('/overview')
                 })
                 .catch((errors) => {
                     console.log(errors.message);

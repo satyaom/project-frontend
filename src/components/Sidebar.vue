@@ -4,7 +4,7 @@
             {{user}}
         </div>
         <div class="menu-items">
-            <router-link to="/dashboard" active-class="active" tag="button" exact class="side-btn">
+            <router-link to="/overview" active-class="active" tag="button" exact class="side-btn">
                 <div class="link-container">
                     Overview
                 </div>
