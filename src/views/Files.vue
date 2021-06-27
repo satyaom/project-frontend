@@ -1,4 +1,5 @@
 <template>
+    <h4>{{status}}</h4>
     <div class="messages">
     <div v-for="item in doc" v-bind:key="item" class="card"> 
         <img :src="item.qrcode" alt='not loaded' width="150" height="150"/>
@@ -20,6 +21,7 @@ export default {
     data() {    
         return {
             doc : [],
+            status: 'Please Wait',
         }    
     },
     methods : {
@@ -41,6 +43,7 @@ export default {
             files[i].file = str_file
             await this.doc.push(files[i]);
         }
+        this.status = ""
     }
 }
 </script>

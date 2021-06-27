@@ -7,6 +7,7 @@
               Upload! 
             </button> 
         </div>
+        <h4>{{status}}</h4>
       </div>
 
 </template>
@@ -19,6 +20,7 @@ import {addDataDB} from '../services/store_files'
         data() {
             return {
                 selectedFile:'',
+                status:'',
             }
         },
         methods: {
@@ -26,12 +28,14 @@ import {addDataDB} from '../services/store_files'
                 this.selectedFile = event.target.files[0]
             },
             onFileUpload() {
+                this.status='Please wait'
                 const formData = new FormData();
                 formData.append("postFile", this.selectedFile);
                 console.log(this.selectedFile);
                 axios.post('https://cryptyy.herokuapp.com/upload', formData, {withCredentials: true})
                 .then( async (response)=>{
                     await addDataDB(response)
+                    this.status = 'File uploaded'
                     console.log('uploaded')
                 })
                 .catch((e)=>{

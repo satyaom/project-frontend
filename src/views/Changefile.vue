@@ -9,6 +9,7 @@
               Upload! 
             </button> 
         </div>
+      <h4>{{status}}</h4>  
       </div>
 </template>
 
@@ -22,6 +23,7 @@
             return {
                 selectedFile:'',
                 number:'',
+                status: '',
             }
         },
         methods: {
@@ -29,6 +31,7 @@
                 this.selectedFile = event.target.files[0]
             },
             onFileUpload() {
+                this.status = 'Please Wait'
                 this.number = document.getElementById('num').value;
                 const formData = new FormData();
                 formData.append("postFile", this.selectedFile);
@@ -36,7 +39,9 @@
                 console.log(this.selectedFile);
                 axios.post('https://cryptyy.herokuapp.com/updateData', formData, {withCredentials: true})
                 .then(async ()=>{
+                    this.status = 'Fetching and verifying the data'
                     await putDataDB();
+                    this.status = 'File Uploaded'
                     console.log('uploaded with no.')
                 })
                 .catch((e)=>{
