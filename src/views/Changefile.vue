@@ -39,7 +39,9 @@
                 console.log(this.selectedFile);
                 axios.post('https://cryptyy.herokuapp.com/updateData', formData, {withCredentials: true})
                 .then(async ()=>{
-                    st.state = true
+                    setTimeout(()=>{
+                        st.state = true
+                    }, 100);
                     this.status = 'File Uploaded'
                     console.log('uploaded with no.')
                 })

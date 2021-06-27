@@ -1,7 +1,7 @@
 <template>
     <div class="messages">
-    <h4>{{status}}</h4>
     <div v-if="loading_status">
+    <h4 style="margin-left:650px">{{status}}</h4>
          <div class="loader"></div> 
     </div>
     <div v-for="item in doc" v-bind:key="item" class="card"> 
@@ -70,13 +70,11 @@ export default {
   border: 16px solid #f3f3f3; /* Light grey */
   border-top: 16px solid #3498db; /* Blue */
   border-radius: 50%;
-  width: 120px;
-  height: 120px;
+  width: 200px;
+  height: 200px;
   animation: spin 2s linear infinite;
-    justify-content: center;
-    align-items: center;
- 
-
+  margin-left: 650px;
+  margin-top: 300px;
 }
 
 @keyframes spin {
