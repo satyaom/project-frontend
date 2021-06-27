@@ -1,7 +1,7 @@
 <template>
     <div class="messages">
     <div v-if="loading_status">
-    <h4 style="margin-left:650px">{{status}}</h4>
+    <h4 style="margin-left:425px">{{status}}</h4>
          <div class="loader"></div> 
     </div>
     <div v-for="item in doc" v-bind:key="item" class="card"> 
@@ -18,7 +18,7 @@
 </template>
 
 <script>
-import {putDataDB, getDataDB} from '../services/store_files'
+import {putDataDB, getDataDB, isPutData} from '../services/store_files'
 import {st} from '../views/Changefile.vue';
 
 export default {
@@ -46,11 +46,16 @@ export default {
             this.status = 'Verifying Files'
             this.loading_status = true
             await putDataDB()
-
+            st.state = false
         }
-        st.state = false
+        if(isPutData()) {
+            this.status = 'Verifying Files'
+            await putDataDB()
+        } 
+        // this.status = 'Fetching Files'
         this.status = 'Fetching Files'
         let files = await getDataDB();
+        
         for(let i = 0; i < files.length; i++){
             let doc_base64 = this.arrayBufferToBase64(files[i].file)
             let str_file = "data:"+files[i].filetype+";base64,"+doc_base64;
@@ -73,7 +78,7 @@ export default {
   width: 200px;
   height: 200px;
   animation: spin 2s linear infinite;
-  margin-left: 650px;
+  margin-left: 450px;
   margin-top: 300px;
 }
 
@@ -103,6 +108,7 @@ export default {
   padding: 2px 16px;
 }
 .messages {
+    margin-left: 10%;
     display: flex;
   flex-wrap: wrap;
   padding: 0 4px;
