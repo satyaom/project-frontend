@@ -77,7 +77,7 @@ export default {
             await putDataDB()
             st.state = false
         }
-        if(isPutData() || this.doc.length == 0) {
+        if(isPutData()) {
             this.status = 'Verifying Files'
             await putDataDB()
         } 
