@@ -136,6 +136,7 @@ export default {
   transition: 0.3s;
   overflow: auto;
   width: 20vw;
+  height: 510px;
 }
 
 .card:hover {
