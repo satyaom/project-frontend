@@ -11,7 +11,7 @@
         <h4>NAME: {{item.name}}</h4>
         <h4>FILE TYPE: {{item.filetype}}</h4> 
         <a :href="item.file" target="_blank">View File 📩</a><br><br>
-        <button @click="deleteDoc(item.fileid)">Delete</button>
+        <button class="button" @click="deleteDoc(item.fileid)">Delete</button> 🗑️
         <h4 v-if="item.tampered">❌</h4>
         <h4 v-else>✅</h4>
         </div>
@@ -99,7 +99,18 @@ export default {
 </script>
 
 <style scoped>
-
+.button {
+  background-color: #008CBA;
+  border: none;
+  color: white;
+  padding: 5px 5px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 15px;
+  font-weight: bold;
+  border-radius: 0.6em;
+}
 .loader {
   border: 16px solid #f3f3f3; /* Light grey */
   border-top: 16px solid #3498db; /* Blue */
@@ -123,9 +134,8 @@ export default {
   margin-bottom: 8px;
   box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
   transition: 0.3s;
-  width: 20vw;
-  height: 51vh;
   overflow: auto;
+  width: 20vw;
 }
 
 .card:hover {
@@ -133,7 +143,9 @@ export default {
 }
 
 .container {
+  
   padding: 2px 16px;
+  overflow-wrap: break-word;
 }
 .messages {
     margin-left: 10%;
