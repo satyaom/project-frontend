@@ -118,8 +118,8 @@ export default {
 .title {
     font-weight: bold;
     color: white;
-    font-size: 40px;
-    margin-top: 60px;
+    font-size: 25px;
+    margin-top: 40px;
 }
 
 .menu-items {
