@@ -43,9 +43,10 @@ export default {
 .dashboard {
     display: grid;
     grid-template-columns: 1fr 5fr;
-    background-color: teal;
+    background-color: #6666ff;
     height: 100vh;
     width: 100vw;
+    text-align: center;
 }
 
 .content {

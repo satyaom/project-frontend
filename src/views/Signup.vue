@@ -1,12 +1,14 @@
 <template>
-    <button @click="homePage">Home</button>
-    <div>    
-        <h2>Sign Up</h2>    
+    <div class="line_top">
+    <button @click="homePage" class="btn">Home</button>
+    </div>
+    <div class="login_grp">    
+        <h2>SIGN UP</h2><br>    
         <form v-on:submit="signup">    
-            Name: <input type="Name" name="name" id="name"/><br><br>    
-            Email: <input type="text" name="email" id="email"/><br><br>    
-            Password: <input type="password" name="password" id="pass"/><br><br>
-            <input type="submit" value="Register" />    
+            <input type="Name" name="name" class="form__input" placeholder="Name" id="name"><br><br>    
+            <input type="text" name="email" class="form__input" placeholder="Email" id="email"/><br><br>    
+            <input type="text" name="password" class="form__input" placeholder="Password" id="pass"/><br><br>
+            <input type="submit" value="Register" class="btn"/>    
         </form>    
     </div>
 </template>
@@ -30,7 +32,7 @@
                         password: document.getElementById('pass').value,    
                     }    
                     axios.post("https://cryptyy.herokuapp.com/signup", data, {withCredentials: true})    
-                        .then(async (response) => { 
+                        .then(async () => { 
                             console.log("signed up")    
                             router.push("/login")    
                         })    
@@ -43,3 +45,66 @@
         } 
     }
 </script>
+<style scoped>
+.line_top {
+    align-self: auto;
+    background: #6666ff;
+}
+.login_grp {
+    border-radius: 20px;
+    margin-left: 35%;
+    margin-top: 12vh;
+    padding-bottom: 10px;
+    width: 30vw;
+    align-items: center;
+    color:white;
+    padding-top: 10px;
+    background: #6666ff
+
+}
+.form__input {
+  font-family: 'Roboto', sans-serif;
+  color: #333;
+  font-size: 1.2rem;
+	margin: 0 auto;
+  padding: 1.5rem 2rem;
+  border-radius: 0.2rem;
+  background-color: rgb(255, 255, 255);
+  border: none;
+  width: 20vw;
+  display: block;
+  border-bottom: 0.3rem solid transparent;
+  transition: all 0.3s;
+}
+
+.btn {
+  box-sizing: border-box;
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  background-color: transparent;
+  border: 2px solid;
+  border-radius: 0.6em;
+  color: white;
+  cursor: pointer;
+ 
+  -webkit-align-self: center;
+      -ms-flex-item-align: center;
+          align-self: center;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1;
+  margin: 20px;
+  padding: 1.2em 2.8em;
+  text-decoration: none;
+  text-align: center;
+  text-transform: uppercase;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+}
+.btn:hover, .btn:focus {
+  color:black;
+
+  outline: 0;
+}
+</style>

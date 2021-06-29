@@ -1,9 +1,8 @@
 <template>
-    <div class="overview">
-        Overview<br>
-    </div>
-        <p>TokenID : {{tokenid}}</p><br>
-        <p>Public Key : {{pkey}}</p>
+        <div class="overview">
+        <p><b><u>TokenID</u></b> : {{tokenid}}</p><br>
+        <p><b><u>Public Key</u></b> : <br><br>{{pkey}}</p>
+        </div>
 </template>
 
 <script>
@@ -46,13 +45,10 @@ export default {
 
 <style scoped>
 .overview {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 10%;
-    width: 100%;
-    font-size: 40px;
-    color: rgb(12, 167, 167);
-    font-weight: 600;
+    margin-top: 10%;
+    margin-left: 5%;
+    font-size: 25px;
+    text-align: left;
+    width: 75vw;
 }
 </style>

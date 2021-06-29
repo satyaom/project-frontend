@@ -80,7 +80,7 @@ export default {
      -moz-appearance: none;
           appearance: none;
   background-color: transparent;
-  border: 2px solid #b8eecd;
+  border: 2px solid whitesmoke;
   border-radius: 0.6em;
   color: #ffffff;
   cursor: pointer;
@@ -112,13 +112,14 @@ export default {
   transition: box-shadow 300ms ease-in-out, color 300ms ease-in-out;
 }
 .first:hover {
-  box-shadow: 0 0 40px 40px #51906b inset;
+  box-shadow: 0 0 40px 40px #b2b2ff inset;
 }
 
 .title {
+    font-weight: bold;
     color: white;
-    font-size: 24px;
-    margin-top: 10px;
+    font-size: 40px;
+    margin-top: 60px;
 }
 
 .menu-items {
@@ -136,8 +137,8 @@ export default {
     border: none;
     padding: 16px 0px;
     cursor: pointer;
-    font-size: 16px;
-    font-weight: 500;
+    font-size: 17px;
+    font-weight: bold;
     color: white;
     background-color: transparent;
 }
@@ -149,7 +150,7 @@ export default {
 .side-btn.active {
     position: relative;
     background-color: white;
-    color: teal;
+    color:#6666ff;
     font-weight: 600;
     margin-left: 10px;
     border-radius: 30px 0 0 30px;
@@ -188,6 +189,6 @@ export default {
     height: 60px;
     width: 60px;
     border-radius: 50%;
-    background-color: teal;
+    background-color:#6666ff;
 }
 </style>
