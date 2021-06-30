@@ -46,7 +46,7 @@
                     axios.post("https://cryptyy.herokuapp.com/login", data, {withCredentials: true})    
                         .then(async () => { 
                             console.log("Logged in")
-                            router.push("/dashboard")    
+                            router.push("/overview")    
                         })    
                         .catch((errors) => {    
                             console.log(errors.message)    
