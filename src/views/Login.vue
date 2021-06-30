@@ -1,5 +1,5 @@
 <template>
-    <div class="line_top">
+    <div>
     <button @click="homePage" class="btn">Home</button>
     <button @click="signupPage" class="btn">Register</button>
     </div>
@@ -61,20 +61,18 @@
     }
 </script>
 <style scoped>
-.line_top {
-    align-self: auto;
-    background: #6666ff;
-}
+
 .login_grp {
     border-radius: 20px;
     margin-left: 35%;
     margin-top: 12vh;
     padding-bottom: 10px;
-    width: 30vw;
+    width: 28vw;
     align-items: center;
     color:white;
     padding-top: 10px;
-    background: #6666ff
+    background-color: #63a4ff;
+    background-image: linear-gradient(315deg, #63a4ff 0%, #83eaf1 74%);
 
 }
 .form__input {
@@ -87,6 +85,7 @@
   background-color: rgb(255, 255, 255);
   border: none;
   width: 20vw;
+  height: 4px;
   display: block;
   border-bottom: 0.3rem solid transparent;
   transition: all 0.3s;
@@ -100,7 +99,7 @@
   background-color: transparent;
   border: 2px solid;
   border-radius: 0.6em;
-  color: white;
+  color: #4d4dff;
   cursor: pointer;
  
   -webkit-align-self: center;

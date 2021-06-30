@@ -4,17 +4,29 @@
     <h4 style="margin-left:425px">{{status}}</h4>
          <div class="loader"></div> 
     </div>
-    <div v-else v-for="item in doc" v-bind:key="item" class="card"> 
-        <img :src="item.qrcode" alt='not loaded' width="150" height="150"/>
-        <div class="container">
-        <h4>FILE ID: {{item.fileid}}</h4>
-        <h4>NAME: {{item.name}}</h4>
-        <h4>FILE TYPE: {{item.filetype}}</h4> 
-        <a :href="item.file" target="_blank">View File 📩</a><br><br>
-        <button class="button" @click="deleteDoc(item.fileid)">Delete</button> 🗑️
-        <h4 v-if="item.tampered">❌</h4>
-        <h4 v-else>✅</h4>
+    <div v-else v-for="item in doc" v-bind:key="item">
+        <div v-if="!item.tampered" class="card"> 
+          <img :src="item.qrcode" alt='not loaded' width="150" height="150"/>
+          <div class="container">
+          <h4>FILE ID: {{item.fileid}}</h4>
+          <h4>NAME: {{item.name}}</h4>
+          <h4>FILE TYPE: {{item.filetype}}</h4> 
+          <a :href="item.file" target="_blank">View File 📩</a><br><br>
+          <button class="button" @click="deleteDoc(item.fileid)">Delete</button> 🗑️
+          <h4>✅</h4>
+          </div>
         </div>
+        <div v-else class="red_card">
+          <img :src="item.qrcode" alt='not loaded' width="150" height="150"/>
+          <div class="container">
+          <h4>FILE ID: {{item.fileid}}</h4>
+          <h4>NAME: {{item.name}}</h4>
+          <h4>FILE TYPE: {{item.filetype}}</h4> 
+          <a :href="item.file" target="_blank">View File 📩</a><br><br>
+          <button class="button" @click="deleteDoc(item.fileid)">Delete</button> 🗑️
+          <h4>❌</h4>
+        </div>
+        </div>    
     </div>
     </div>
 </template>
@@ -131,19 +143,39 @@ export default {
 }
 
 .card {
+  border-radius: 20px;
+  padding-top: 10px;
   margin-top: 14px;
   margin-right: 14px;
   margin-left: 14px;
   margin-bottom: 14px;
-  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.4);
   transition: 0.3s;
   overflow: auto;
   width: 20vw;
   height: 510px;
 }
 
+.red_card {
+  border-radius: 20px;
+  padding-top: 10px;
+  margin-top: 14px;
+  margin-right: 14px;
+  margin-left: 14px;
+  margin-bottom: 14px;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.4);
+  transition: 0.3s;
+  overflow: auto;
+  width: 20vw;
+  height: 510px;
+  background-color: #fbceb1;
+}
+
+.red_card:hover {
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.6);
+}
 .card:hover {
-  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.6);
 }
 
 .container {
