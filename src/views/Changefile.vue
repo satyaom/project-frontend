@@ -15,6 +15,7 @@
 
 <script>
     import axios from 'axios';
+    import {check_login} from "../services/check_login"
     let st= {state: false}
 
     export default {
@@ -50,7 +51,9 @@
                 });
             }
         },
-
+        created() {
+            check_login();
+        }
     }
     export{st}
 </script>

@@ -15,6 +15,8 @@
 <script>
 import axios from 'axios';
 import {addDataDB} from '../services/store_files'
+import {check_login} from "../services/check_login"
+import router from '../router/index'
     export default {
         name: 'uploadFile',
         data() {
@@ -24,6 +26,15 @@ import {addDataDB} from '../services/store_files'
             }
         },
         methods: {
+            check_login: function() {    
+                axios.get('https://cryptyy.herokuapp.com', {withCredentials:true})
+                .then(() => {
+                })
+                .catch((errors) => {
+                    console.log(errors.message);
+                    router.push("/login")
+                })
+            }, 
             onFileChange(event) {
                 this.selectedFile = event.target.files[0]
             },
@@ -42,6 +53,9 @@ import {addDataDB} from '../services/store_files'
                     console.log(e.message);
                 });
             }
+        }, 
+        created() {
+            check_login();
         }
         
     }

@@ -49,6 +49,7 @@ export default {
             })
             .catch((errors) => {
                 console.log(errors.message);
+                
                 router.push("/login")
             })
         },
@@ -75,7 +76,7 @@ export default {
 <style scoped>
 
 .btn {
-  box-sizing: border-box;
+    
   -webkit-appearance: none;
      -moz-appearance: none;
           appearance: none;

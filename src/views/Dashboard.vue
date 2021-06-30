@@ -10,7 +10,7 @@
 <script>
 import router from "../router"    
 import axios from "axios"
-
+import {deleteDB} from "../services/store_files"
 import Sidebar from '../components/Sidebar'
 // import {putDataDB} from '../services/store_files'
 export default {
@@ -25,10 +25,12 @@ export default {
                 .then(async (response) => {
                     console.log(response.data.firstname);
                     // await putDataDB();
-                    router.push('/overview')
+                    
                 })
                 .catch((errors) => {
                     console.log(errors.message);
+                    localStorage.clear();
+                    deleteDB()
                     router.push("/login")
                 })
             }    
@@ -45,13 +47,11 @@ export default {
     grid-template-columns: 1fr 5fr;
     background-color: #6666ff;
     height: 100vh;
-    width: 100vw;
+    width: 100%;
     text-align: center;
 }
 
 .content {
     background-color: white;
-    border-radius: 10px;
-    margin: 6px 6px 6px 0px;
 }
 </style>

@@ -8,6 +8,7 @@
 <script>
 import router from "../router"    
 import axios from "axios"
+import {check_login} from "../services/check_login"
 
 export default {
     name: "overview",    
@@ -17,7 +18,7 @@ export default {
             pkey : '',
         }    
     },    
-    methods: {    
+    methods: {   
         check: async function() {    
             await axios.get('https://cryptyy.herokuapp.com/overview', {withCredentials:true})
             .then((response) => {
@@ -32,7 +33,8 @@ export default {
             })
         }    
     },    
-    mounted() {
+    created() {
+        check_login();
         if(localStorage.tokenid) {
             this.tokenid = localStorage.tokenid
             this.pkey = localStorage.pkey
@@ -49,6 +51,7 @@ export default {
     margin-left: 5%;
     font-size: 25px;
     text-align: left;
-    width: 75vw;
+    width: 70%;
+    overflow-wrap: break-word;
 }
 </style>

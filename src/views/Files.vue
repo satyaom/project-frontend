@@ -23,6 +23,7 @@
 import axios from 'axios';
 import {putDataDB, getDataDB, isPutData, deleteFile} from '../services/store_files'
 import {st} from '../views/Changefile.vue';
+import {check_login} from "../services/check_login"
 
 export default {
     name: "file",
@@ -71,6 +72,8 @@ export default {
         }
     }, 
     async created() {
+        check_login();
+
         if(st.state) {
             this.status = 'Verifying Files'
             this.loading_status = true
@@ -128,10 +131,10 @@ export default {
 }
 
 .card {
-  margin-top: 8px;
-  margin-right: 8px;
-  margin-left: 8px;
-  margin-bottom: 8px;
+  margin-top: 14px;
+  margin-right: 14px;
+  margin-left: 14px;
+  margin-bottom: 14px;
   box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
   transition: 0.3s;
   overflow: auto;
@@ -149,6 +152,7 @@ export default {
   overflow-wrap: break-word;
 }
 .messages {
+    margin-top: 2%;
     margin-left: 10%;
     display: flex;
   flex-wrap: wrap;
@@ -157,6 +161,5 @@ export default {
     font-weight: 600;
     height: 95vh;
     overflow:auto;
-    
 }
 </style>
