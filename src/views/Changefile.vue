@@ -67,8 +67,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
 
 .form__input {
-    margin-left: 36%;
-    margin-top: 2%;
+    margin-left: 550px;
+    margin-top: 3%;
   font-family: 'Roboto', sans-serif;
   color: #333;
   font-size: 1.2rem;
@@ -83,18 +83,18 @@
 }
 .down_log {
   position: relative;
-  margin-top: 35%;
-  margin-left: 23%;
+  margin-top: 26%;
+  margin-left: 22%;
   margin-right: 24%;
   color: grey;
 }
 .drag-area{
   position: absolute;
-  margin-left: 23%;
-  margin-top: 2%;
+  margin-left: 30%;
+  margin-top: 3%;
   border: 2px dashed #6666ff;
-  height: 500px;
-  width: 700px;
+  height: 300px;
+  width: 400px;
   border-radius: 5px;
   display: flex;
   align-items: center;
@@ -112,16 +112,16 @@
   border: 2px solid #6666ff;
 }
 .drag-area .icon{
-  font-size: 100px;
+  font-size: 50px;
   color: #6666ff;
 }
 .drag-area header{
-  font-size: 30px;
+  font-size: 20px;
   font-weight: 500;
   color: #6666ff;
 }
 .drag-area span{
-  font-size: 25px;
+  font-size: 17px;
   font-weight: 500;
   color: #6666ff;
   margin: 10px 0 15px 0;

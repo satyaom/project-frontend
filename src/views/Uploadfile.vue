@@ -73,18 +73,18 @@ import router from '../router/index'
 
 .down_log {
   position: relative;
-  margin-top: 40%;
-  margin-left: 23%;
+  margin-top: 28%;
+  margin-left: 22%;
   margin-right: 24%;
   color: grey;
 }
 .drag-area{
   position: absolute;
-  margin-left: 23%;
+  margin-left: 30%;
   margin-top: 5%;
   border: 2px dashed #6666ff;
-  height: 500px;
-  width: 700px;
+  height: 300px;
+  width: 400px;
   border-radius: 5px;
   display: flex;
   align-items: center;
@@ -102,16 +102,16 @@ import router from '../router/index'
   border: 2px solid #6666ff;
 }
 .drag-area .icon{
-  font-size: 100px;
+  font-size: 50px;
   color: #6666ff;
 }
 .drag-area header{
-  font-size: 30px;
+  font-size: 20px;
   font-weight: 500;
   color: #6666ff;
 }
 .drag-area span{
-  font-size: 25px;
+  font-size: 17px;
   font-weight: 500;
   color: #6666ff;
   margin: 10px 0 15px 0;
