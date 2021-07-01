@@ -36,6 +36,7 @@
                 this.selectedFile = event.target.files[0]
             },
             onFileUpload() {
+                check_login();
                 this.status = 'Please Wait'
                 this.number = document.getElementById('num').value;
                 const formData = new FormData();
