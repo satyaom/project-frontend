@@ -1,7 +1,7 @@
 <template>
     <div class="messages">
     <div v-if="loading_status">
-    <h4 style="margin-left:425px">{{status}}</h4>
+    <h3 style="margin-left:480px; color: grey">{{status}}</h3>
          <div class="loader"></div> 
     </div>
     <div v-else v-for="item in doc" v-bind:key="item">
@@ -133,7 +133,7 @@ export default {
   width: 200px;
   height: 200px;
   animation: spin 2s linear infinite;
-  margin-left: 450px;
+  margin-left: 500px;
   margin-top: 300px;
 }
 

@@ -1,6 +1,6 @@
 <template>
         <div class="overview">
-        <p><b><u>TokenID</u></b> : {{tokenid}}</p><br>
+        <p><b><u>TokenID</u></b> : {{tokenid}}</p><br><br>
         <p><b><u>Public Key</u></b> : <br><br>{{pkey}}</p>
         </div>
 </template>
@@ -48,7 +48,7 @@ export default {
 <style scoped>
 .overview {
     margin-top: 10%;
-    margin-left: 5%;
+    margin-left: 15%;
     font-size: 25px;
     text-align: left;
     width: 70%;
