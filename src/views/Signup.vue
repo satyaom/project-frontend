@@ -7,7 +7,7 @@
         <form v-on:submit="signup">    
             <input type="Name" name="name" class="form__input" placeholder="Name" id="name"><br><br>    
             <input type="text" name="email" class="form__input" placeholder="Email" id="email"/><br><br>    
-            <input type="text" name="password" class="form__input" placeholder="Password" id="pass"/><br><br>
+            <input type="password" name="password" class="form__input" placeholder="Password" id="pass"/><br><br>
             <input type="submit" value="Register" class="btn"/>    
         </form>    
     </div>

@@ -4,6 +4,9 @@
     <h3 style="margin-left:480px; color: grey">{{status}}</h3>
          <div class="loader"></div> 
     </div>
+    <div v-else-if="doc.length == 0" class="no_upload">
+      <h2>Kindly Upload Some Files</h2>
+    </div>
     <div v-else v-for="item in doc" v-bind:key="item">
         <div v-if="!item.tampered" class="card"> 
           <img :src="item.qrcode" alt='not loaded' width="150" height="150"/>
@@ -11,9 +14,9 @@
           <h4>FILE ID: {{item.fileid}}</h4>
           <h4>NAME: {{item.name}}</h4>
           <h4>FILE TYPE: {{item.filetype}}</h4> 
-          <a :href="item.file" target="_blank">View File 📩</a><br><br>
+          <a :href="item.file" target="filename">View File 📩</a><br><br>
           <button class="button" @click="deleteDoc(item.fileid)">Delete</button> 🗑️
-          <h4>✅</h4>
+          <h4>File Verified ✅</h4>
           </div>
         </div>
         <div v-else class="red_card">
@@ -22,9 +25,9 @@
           <h4>FILE ID: {{item.fileid}}</h4>
           <h4>NAME: {{item.name}}</h4>
           <h4>FILE TYPE: {{item.filetype}}</h4> 
-          <a :href="item.file" target="_blank">View File 📩</a><br><br>
+          <a :href="item.file" target="filename">View File 📩</a><br><br>
           <button class="button" @click="deleteDoc(item.fileid)">Delete</button> 🗑️
-          <h4>❌</h4>
+          <h4>File Tampered ❌</h4>
         </div>
         </div>    
     </div>
@@ -114,6 +117,16 @@ export default {
 </script>
 
 <style scoped>
+.no_upload {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+    font-size: 40px;
+    color: rgb(167, 167, 167);
+    font-weight: 600;
+}
 .button {
   background-color: #008CBA;
   border: none;
@@ -130,8 +143,8 @@ export default {
   border: 16px solid #f3f3f3; /* Light grey */
   border-top: 16px solid #3498db; /* Blue */
   border-radius: 50%;
-  width: 200px;
-  height: 200px;
+  width: 150px;
+  height: 150px;
   animation: spin 2s linear infinite;
   margin-left: 500px;
   margin-top: 300px;
@@ -153,7 +166,7 @@ export default {
   transition: 0.3s;
   overflow: auto;
   width: 20vw;
-  height: 510px;
+  height: 500px;
 }
 
 .red_card {

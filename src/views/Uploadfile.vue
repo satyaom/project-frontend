@@ -9,7 +9,7 @@
   <div class="down_log" id="info_area">
         <h3 v-if="selectedFile.name">File Name: {{selectedFile.name}}</h3>
         <h3 v-else>File Name: Select File</h3>
-    <button @click="onFileUpload" class="btn">Upload</button><br><br><br>
+    <button @click="onFileUpload" class="btn" style="padding:0.9rem 2rem">Upload</button><br><br><br>
         <h3 v-if="status">Status: {{status}}</h3>
         <h3 v-else>Status: No File Selected</h3>
   </div>

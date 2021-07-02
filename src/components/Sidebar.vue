@@ -24,7 +24,7 @@
                     Change File
                 </div>
             </router-link>
-        <button @click="logout" class="btn first">Logout</button>
+        <button @click="logout" class="btn first" style="margin-top: 60px">Logout</button>
         </div>
     </div>
 </template>
@@ -95,8 +95,7 @@ export default {
   font-size: 1rem;
   font-weight: 400;
   line-height: 1;
-  margin: 20px;
-  padding: 1.2em 2.8em;
+  padding: 0.8em 2.8em;
   text-decoration: none;
   text-align: center;
   text-transform: uppercase;
@@ -117,21 +116,22 @@ export default {
 }
 
 .title {
+    text-transform: uppercase;
     font-weight: bold;
     color: white;
     font-size: 25px;
-    margin-top: 40px;
+    margin-top: 30px;
 }
 
 .menu-items {
     display: flex;
     flex-direction: column;
-    margin-top: 40px;
+    margin-top: 2px;
     margin-left: 6px;
 }
 
 .menu-items > * {
-    margin-top: 60px;
+    margin-top: 40px;
 }
 
 .side-btn {

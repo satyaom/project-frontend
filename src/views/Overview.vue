@@ -49,7 +49,7 @@ export default {
 .overview {
     margin-top: 10%;
     margin-left: 15%;
-    font-size: 25px;
+    font-size: 20px;
     text-align: left;
     width: 70%;
     overflow-wrap: break-word;
