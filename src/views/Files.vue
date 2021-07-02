@@ -123,7 +123,7 @@ export default {
     align-items: center;
     height: 100%;
     width: 100%;
-    font-size: 40px;
+    font-size: 30px;
     color: rgb(167, 167, 167);
     font-weight: 600;
 }
@@ -141,8 +141,8 @@ export default {
 }
 .loader {
   border: 16px solid #f3f3f3; /* Light grey */
-  border-top: 16px solid #3498db; /* Blue */
-  border-radius: 50%;
+  border-top: 16px solid #5072A7; /* Blue */
+  border-radius: 100%;
   width: 150px;
   height: 150px;
   animation: spin 2s linear infinite;
