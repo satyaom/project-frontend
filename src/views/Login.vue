@@ -9,7 +9,7 @@
             <input type="text" name="email" id="email" class="form__input" placeholder="Email"/>
             <br><br>    
             <input type="password" name="password" id="pass" class="form__input" placeholder="Password"/><br><br>    
-            <input type="submit" value="Login" class="btn"/>    
+            <input type="submit" value="SIGN IN" class="btn"/>    
         </form>    
     </div>
     <br>
@@ -64,14 +64,18 @@
 
 .login_grp {
     border-radius: 20px;
-    margin-left: 35%;
+    margin-left: 36%;
     margin-top: 12vh;
-    padding-bottom: 10px;
+    padding-bottom: 30px;
+    padding-left: 6px;
+    padding-right: 6px;
     width: 28vw;
     align-items: center;
-    color:white;
+    color:#5072A7;
+    font-weight: bold;
+    font-size: 25px;
     padding-top: 10px;
-    background-color: #6666ff;
+    background-image: url("../assets/cta-illustration.svg");
 
 }
 .form__input {
@@ -79,14 +83,14 @@
   color: #333;
   font-size: 1.2rem;
 	margin: 0 auto;
-  padding: 1.5rem 2rem;
+  padding: 1rem 2rem;
   border-radius: 0.2rem;
   background-color: rgb(255, 255, 255);
   border: none;
   width: 20vw;
   height: 4px;
   display: block;
-  border-bottom: 0.3rem solid transparent;
+  border: 0.1rem solid #5072A7;
   transition: all 0.3s;
 }
 .btn {
@@ -97,7 +101,7 @@
   background-color: transparent;
   border: 2px solid;
   border-radius: 0.6em;
-  color: whitesmoke;
+  color: #5072A7;
   cursor: pointer;
  
   -webkit-align-self: center;
@@ -107,7 +111,7 @@
   font-weight: 400;
   line-height: 1;
   margin: 20px;
-  padding: 1.2em 2.8em;
+  padding: 1em 2.8em;
   text-decoration: none;
   text-align: center;
   text-transform: uppercase;
