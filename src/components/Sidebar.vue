@@ -126,7 +126,7 @@ export default {
 .menu-items {
     display: flex;
     flex-direction: column;
-    margin-top: 2px;
+    margin-top: 15px;
     margin-left: 6px;
 }
 
