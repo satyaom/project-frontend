@@ -1,5 +1,4 @@
 <template> 
-        <input type="text" name="Number" id="num" class='form__input' placeholder="Enter File Number">
      <div class="drag-area" id="upload_area">     
     <div class="icon"><i class="fas fa-cloud-upload-alt"></i></div>
     <input type="file" @change="onFileChange">
@@ -8,9 +7,10 @@
     <header>Click Here</header>
   </div>
   <div class="down_log" id="info_area">
+        <input type="text" name="Number" id="num" class='form__input' placeholder="Enter File Number"><br>
         <h3 v-if="selectedFile.name">File Name: {{selectedFile.name}}</h3>
         <h3 v-else>File Name: Select File</h3>
-    <button @click="onFileUpload" class="btn">Upload</button>
+    <button @click="onFileUpload" class="btn">Upload</button><br><br><br>
         <h3 v-if="status">Status: {{status}}</h3>
         <h3 v-else>Status: No File Selected</h3>
   </div>
@@ -67,12 +67,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
 
 .form__input {
-    margin-left: 550px;
-    margin-top: 3%;
+    margin-left: 37%;
   font-family: 'Roboto', sans-serif;
   color: #333;
-  font-size: 1.2rem;
-  padding: 1.5rem 2rem;
+  font-size: auto;
+  padding: 1% 1%;
   border-radius: 0.2rem;
   background-color: rgb(255, 255, 255);
   width: 20vw;
@@ -83,18 +82,22 @@
 }
 .down_log {
   position: relative;
-  margin-top: 26%;
-  margin-left: 22%;
-  margin-right: 24%;
+  margin-top: 27%;
+  margin-left: center;
+
+  font-size: auto;
   color: grey;
+}
+.down_log h3 {
+  font-size: auto;
 }
 .drag-area{
   position: absolute;
-  margin-left: 30%;
-  margin-top: 3%;
+  margin-left: 27%;
+  margin-top: 5%;
   border: 2px dashed #6666ff;
-  height: 300px;
-  width: 400px;
+  height: 30%;
+  width: 30%;
   border-radius: 5px;
   display: flex;
   align-items: center;
@@ -112,23 +115,23 @@
   border: 2px solid #6666ff;
 }
 .drag-area .icon{
-  font-size: 50px;
+  font-size: auto;
   color: #6666ff;
 }
 .drag-area header{
-  font-size: 20px;
+  font-size: auto;
   font-weight: 500;
   color: #6666ff;
 }
 .drag-area span{
-  font-size: 17px;
+  font-size: auto;
   font-weight: 500;
   color: #6666ff;
   margin: 10px 0 15px 0;
 }
 .drag-area label{
   padding: 10px 25px;
-  font-size: 20px;
+  font-size: auto;
   font-weight: 500;
   border: none;
   outline: none;

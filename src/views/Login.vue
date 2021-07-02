@@ -30,7 +30,7 @@
             check : function() {
                 axios.get('https://cryptyy.herokuapp.com', {withCredentials:true})
                 .then(() => {
-                    router.push("/dashboard")
+                    router.push("/overview")
                 })
                 .catch((errors) => {
                     console.log(errors);
