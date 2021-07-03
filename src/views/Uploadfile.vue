@@ -4,7 +4,7 @@
     <input type="file" @change="onFileChange">
     <header>Drag & Drop to Upload File</header>
     <span>OR</span>
-    <header>Click Here</header>
+    <header>Click in this area</header>
   </div>
   <div class="down_log" id="info_area">
         <h3 v-if="selectedFile.name">File Name: {{selectedFile.name}}</h3>
@@ -111,17 +111,17 @@ import router from '../router/index'
   border: 2px solid #6666ff;
 }
 .drag-area .icon{
-  font-size: auto;
+  font-size: 30px;
   color: #6666ff;
 }
 .drag-area header{
   font-size: auto;
-  font-weight: 500;
+  font-weight: bold;
   color: #6666ff;
 }
 .drag-area span{
   font-size: auto;
-  font-weight: 500;
+  font-weight: bold;
   color: #6666ff;
   margin: 10px 0 15px 0;
 }

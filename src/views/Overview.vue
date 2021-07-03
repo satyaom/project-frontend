@@ -1,7 +1,7 @@
 <template>
         <div class="overview">
-        <p><b><u>TokenID</u></b> : {{tokenid}}</p><br>
-        <p><b><u>Public Key</u></b> : <br><br>{{pkey}}</p>
+        <p><b style="color:#f88379"><u>TokenID</u></b> : {{tokenid}}</p><br>
+        <p><b style="color:#f88379"><u>Public Key</u></b> : <br><br>{{pkey}}</p>
         </div>
 </template>
 
@@ -53,5 +53,7 @@ export default {
     text-align: left;
     width: 70%;
     overflow-wrap: break-word;
+    color: #5072A7;
+    font-weight:bold;
 }
 </style>
