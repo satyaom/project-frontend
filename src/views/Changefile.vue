@@ -6,6 +6,7 @@
     <span>OR</span>
     <header>Click in this area</header>
     <span style="color: #f88379">(Select file less than 5 MB)</span>
+    <span style="color: #f88379; margin-top: 0px">(To tamper select different file)</span>
   </div>
   <div class="down_log" id="info_area">
         <input type="text" name="Number" id="num" class='form__input' placeholder="Enter File Number e.g. 1"><br>
