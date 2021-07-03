@@ -58,7 +58,7 @@
                         .catch((errors) => {    
                             console.log(errors.message)
                             this.status = errors.response.data.message ?errors.response.data.message:
-                                                                    errors.response.data.errors[0].msg;    
+                                                                    'Email: '+errors.response.data.errors[0].msg;    
                             
                         })    
                 }
