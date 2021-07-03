@@ -2,17 +2,18 @@
      <div class="drag-area" id="upload_area">     
     <div class="icon"><i class="fas fa-cloud-upload-alt"></i></div>
     <input type="file" @change="onFileChange">
-    <header>Drag & Drop to Upload File</header>
+    <header>Drag & Drop to Select File</header>
     <span>OR</span>
     <header>Click in this area</header>
+    <span style="color: #f88379">(Select file less than 5 MB)</span>
   </div>
   <div class="down_log" id="info_area">
         <input type="text" name="Number" id="num" class='form__input' placeholder="Enter File Number e.g. 1"><br>
         <h3 v-if="selectedFile.name">File Name: {{selectedFile.name}}</h3>
         <h3 v-else>File Name: Select file from above</h3>
     <button @click="onFileUpload" class="btn" style="padding:0.9rem 2rem">Tamper</button><br><br>
-        <h3 v-if="status">Status: {{status}}</h3>
-        <h3 v-else>Status: Select file and enter file number</h3>
+        <h3 v-if="status"><b style="color: #f88379">Status</b>: {{status}}</h3>
+        <h3 v-else><b style="color: #f88379">Status</b>: Select file and enter file number</h3>
         <div v-if="state_load">
         <div class="lds-roller"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
         </div>
@@ -45,9 +46,14 @@
             },
             onFileUpload() {
                 check_login();
-                this.state_load=true;
-                this.status = 'Please Wait'
-                this.number = document.getElementById('num').value;
+                if(document.getElementById('num').value) {
+                  this.number = document.getElementById('num').value;
+                  this.state_load=true;
+                  this.status = 'Please Wait'
+                }
+                else {
+                  this.status = 'Enter File Number and click tamper'
+                }
                 const formData = new FormData();
                 formData.append("postFile", this.selectedFile);
                 formData.append("number", this.number);

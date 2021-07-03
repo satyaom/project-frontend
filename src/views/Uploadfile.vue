@@ -2,16 +2,17 @@
           <div class="drag-area" id="upload_area">
     <div class="icon"><i class="fas fa-cloud-upload-alt"></i></div>
     <input type="file" @change="onFileChange">
-    <header>Drag & Drop to Upload File</header>
+    <header>Drag & Drop to Select File</header>
     <span>OR</span>
     <header>Click in this area</header>
+    <span style="color: #f88379">(Select file less than 5 MB)</span>
   </div>
   <div class="down_log" id="info_area">
         <h3 v-if="selectedFile.name">File Name: {{selectedFile.name}}</h3>
         <h3 v-else>File Name: Select file from above</h3>
     <button @click="onFileUpload" class="btn" style="padding:0.9rem 2rem">Upload</button><br><br>
-        <h3 v-if="status">Status: {{status}}</h3>
-        <h3 v-else>Status: No file selected</h3>
+        <h3 v-if="status"><b style="color: #f88379">Status</b>: {{status}}</h3>
+        <h3 v-else><b style="color: #f88379">Status</b>: No file selected</h3>
         <div v-if="state">
         <div class="lds-roller"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
         </div>
