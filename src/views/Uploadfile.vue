@@ -8,10 +8,10 @@
   </div>
   <div class="down_log" id="info_area">
         <h3 v-if="selectedFile.name">File Name: {{selectedFile.name}}</h3>
-        <h3 v-else>File Name: Select File</h3>
+        <h3 v-else>File Name: Select file from above</h3>
     <button @click="onFileUpload" class="btn" style="padding:0.9rem 2rem">Upload</button><br><br>
         <h3 v-if="status">Status: {{status}}</h3>
-        <h3 v-else>Status: No File Selected</h3>
+        <h3 v-else>Status: No file selected</h3>
         <div v-if="state">
         <div class="lds-roller"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
         </div>
@@ -28,7 +28,7 @@ import router from '../router/index'
         name: 'uploadFile',
         data() {
             return {
-                selectedFile:'Select File',
+                selectedFile:'',
                 status:'',
                 state: false
             }
@@ -45,6 +45,7 @@ import router from '../router/index'
             }, 
             onFileChange(event) {
                 this.selectedFile = event.target.files[0]
+                this.status = 'Kindly click upload'
             },
             onFileUpload() {
                 check_login()

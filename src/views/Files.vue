@@ -7,27 +7,29 @@
     <div v-else-if="doc.length == 0" class="no_upload">
       <h2>Kindly Upload Some Files</h2>
     </div>
-    <div v-else v-for="item in doc" v-bind:key="item">
+    <div v-else v-for="(item, index) in doc" v-bind:key="item">
         <div v-if="!item.tampered" class="card"> 
-          <img :src="item.qrcode" alt='not loaded' width="150" height="150"/>
+          <p><b style="color: teal">FILE NUMBER</b>: {{index+1}}</p>
+          <img :src="item.qrcode" alt='not loaded' width="125" height="125"/>
           <div class="container">
-          <h4>FILE ID: {{item.fileid}}</h4>
-          <h4>NAME: {{item.name}}</h4>
-          <h4>FILE TYPE: {{item.filetype}}</h4> 
-          <a :href="item.file" target="filename">View File 📩</a><br><br>
+          <p><b style="color: teal">FILE ID</b>: {{item.fileid}}</p>
+          <p><b style="color: teal">NAME</b>: {{item.name}}</p>
+          <p><b style="color: teal">FILE TYPE</b>: {{item.filetype}}</p>
+          <a :href="item.file" target="filename" style="color: #6666ff">View File 📩</a><br><br>
           <button class="button" @click="deleteDoc(item.fileid)">Delete</button> 🗑️
-          <h4>File Verified ✅</h4>
+          <p>File Verified ✅</p>
           </div>
         </div>
         <div v-else class="red_card">
-          <img :src="item.qrcode" alt='not loaded' width="150" height="150"/>
+          <p><b>FILE NUMBER</b>: {{index+1}}</p>
+          <img :src="item.qrcode" alt='not loaded' width="125" height="125"/>
           <div class="container">
-          <h4>FILE ID: {{item.fileid}}</h4>
-          <h4>NAME: {{item.name}}</h4>
-          <h4>FILE TYPE: {{item.filetype}}</h4> 
-          <a :href="item.file" target="filename">View File 📩</a><br><br>
+          <p><b style="color: #FF6347">FILE ID</b>: {{item.fileid}}</p>
+          <p><b style="color: #FF6347">NAME</b>: {{item.name}}</p>
+          <p><b style="color: #FF6347">FILE TYPE</b>: {{item.filetype}}</p>
+          <a :href="item.file" target="filename" style="color: #6666ff">View File 📩</a><br><br>
           <button class="button" @click="deleteDoc(item.fileid)">Delete</button> 🗑️
-          <h4>File Tampered ❌</h4>
+          <p>File Tampered ❌</p>
         </div>
         </div>    
     </div>
@@ -158,10 +160,10 @@ export default {
 .card {
   border-radius: 20px;
   padding-top: 10px;
-  margin-top: 14px;
-  margin-right: 14px;
-  margin-left: 14px;
-  margin-bottom: 14px;
+  margin-top: 10px;
+  margin-right: 10px;
+  margin-left: 10px;
+  margin-bottom: 10px;
   box-shadow: 0 4px 8px 0 rgba(0,0,0,0.4);
   transition: 0.3s;
   overflow: auto;
@@ -172,10 +174,10 @@ export default {
 .red_card {
   border-radius: 20px;
   padding-top: 10px;
-  margin-top: 14px;
-  margin-right: 14px;
-  margin-left: 14px;
-  margin-bottom: 14px;
+  margin-top: 10px;
+  margin-right: 10px;
+  margin-left: 10px;
+  margin-bottom: 10px;
   box-shadow: 0 4px 8px 0 rgba(0,0,0,0.4);
   transition: 0.3s;
   overflow: auto;
@@ -192,8 +194,7 @@ export default {
 }
 
 .container {
-  
-  padding: 2px 16px;
+  padding: 0px 16px;
   overflow-wrap: break-word;
 }
 .messages {

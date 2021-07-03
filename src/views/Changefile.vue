@@ -7,12 +7,12 @@
     <header>Click in this area</header>
   </div>
   <div class="down_log" id="info_area">
-        <input type="text" name="Number" id="num" class='form__input' placeholder="Enter File Number"><br>
+        <input type="text" name="Number" id="num" class='form__input' placeholder="Enter File Number e.g. 1"><br>
         <h3 v-if="selectedFile.name">File Name: {{selectedFile.name}}</h3>
-        <h3 v-else>File Name: Select File</h3>
-    <button @click="onFileUpload" class="btn" style="padding:0.9rem 2rem">Upload</button><br><br>
+        <h3 v-else>File Name: Select file from above</h3>
+    <button @click="onFileUpload" class="btn" style="padding:0.9rem 2rem">Tamper</button><br><br>
         <h3 v-if="status">Status: {{status}}</h3>
-        <h3 v-else>Status: No File Selected</h3>
+        <h3 v-else>Status: Select file and enter file number</h3>
         <div v-if="state_load">
         <div class="lds-roller"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
         </div>
@@ -38,6 +38,10 @@
         methods: {
             onFileChange(event) {
                 this.selectedFile = event.target.files[0]
+                if(document.getElementById('num').value)
+                  this.status = 'Kindly click tamper'
+                else
+                  this.status = 'Enter File Number and click tamper'
             },
             onFileUpload() {
                 check_login();
@@ -53,7 +57,7 @@
                     setTimeout(()=>{
                         st.state = true
                     }, 100);
-                    this.status = 'File Updated'
+                    this.status = 'File Tampered'
                     this.state_load = false;
                     console.log('uploaded with no.')
                 })
@@ -76,15 +80,16 @@
     margin-left: 37%;
   font-family: 'Roboto', sans-serif;
   color: #333;
-  font-size: auto;
+  font-size: 15px;
   padding: 1% 1%;
   border-radius: 0.2rem;
   background-color: rgb(255, 255, 255);
   width: 20vw;
   height: 4px;
   display: block;
-  border: 0.1rem solid #6666ff;
+  border: 0.2rem solid #6666ff;
   transition: all 0.3s;
+  font-weight: bold;
 }
 .down_log {
   position: relative;

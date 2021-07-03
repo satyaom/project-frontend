@@ -21,7 +21,7 @@
             </router-link>
             <router-link to="/changeFile" active-class="active" tag="button" exact class="side-btn">
                 <div class="link-container">
-                    Change File
+                    Tamper File
                 </div>
             </router-link>
         <button @click="logout" class="btn first" style="margin-top: 60px">Logout</button>
