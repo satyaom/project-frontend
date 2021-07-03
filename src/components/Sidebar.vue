@@ -11,7 +11,7 @@
             </router-link>
             <router-link to="/files" active-class="active" tag="button" exact class="side-btn">
                 <div class="link-container">
-                    Files
+                    Verify Files
                 </div>
             </router-link>
             <router-link to="/uploadFile" active-class="active" tag="button" exact class="side-btn">

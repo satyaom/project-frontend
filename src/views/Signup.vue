@@ -11,6 +11,8 @@
             <input type="submit" value="Register" class="btn"/>    
         </form>    
     </div>
+    <h3 v-if="status"><b style="color: #5072A7; font-size: 15px">{{status}}</b></h3>
+    <div v-else class="lds-roller"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
 </template>
 
 <script>
@@ -18,14 +20,20 @@
     import axios from "axios"
 
     export default {    
-        name: "Signup",    
+        name: "Signup",
+        data() {
+            return {
+                status : ' ',
+            }
+        },    
         methods: {
             homePage() {
                 router.push('/')
             },  
-            signup: (e) => {    
+            signup(e) {    
                 e.preventDefault()      
-                let login = () => {    
+                let login = () => {   
+                    this.status = ''; 
                     let data = {
                         name: document.getElementById('name').value,    
                         email: document.getElementById('email').value,    
@@ -37,10 +45,21 @@
                             router.push("/login")    
                         })    
                         .catch((errors) => {    
-                            console.log(errors.data.message)    
+                            console.log(errors.message)
+                            this.status = errors.response.data.message ?errors.response.data.message:
+                                                                    'Email: '+errors.response.data.errors[0].msg;  
                         })    
-                }    
-                login()    
+                }
+                if(document.getElementById('email').value == '' && document.getElementById('pass').value == ''&& document.getElementById('name').value == '')
+                    this.status = 'Name, email and password field are empty';
+                else if(document.getElementById('email').value == '')
+                    this.status = 'Email Field is empty';
+                else if(document.getElementById('pass').value == '')
+                    this.status = 'Password field is empty'
+                else if(document.getElementById('name').value == '')
+                    this.status = 'Name field is empty'
+                else    
+                    login()    
             }    
         } 
     }
@@ -49,7 +68,7 @@
 .login_grp {
     border-radius: 20px;
     margin-left: 32%;
-    margin-top: 12vh;
+    margin-top: 8vh;
     padding-bottom: 40px;
     padding-left: 60px;
     padding-right: 60px;
@@ -135,5 +154,89 @@
   color:black;
 
   outline: 0;
+}
+.lds-roller {
+  display: inline-block;
+  position: relative;
+  width: 80px;
+  height: 80px;
+}
+.lds-roller div {
+  animation: lds-roller 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+  transform-origin: 40px 40px;
+}
+.lds-roller div:after {
+  content: " ";
+  display: block;
+  position: absolute;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: grey;
+  margin: -4px 0 0 -4px;
+}
+.lds-roller div:nth-child(1) {
+  animation-delay: -0.036s;
+}
+.lds-roller div:nth-child(1):after {
+  top: 63px;
+  left: 63px;
+}
+.lds-roller div:nth-child(2) {
+  animation-delay: -0.072s;
+}
+.lds-roller div:nth-child(2):after {
+  top: 68px;
+  left: 56px;
+}
+.lds-roller div:nth-child(3) {
+  animation-delay: -0.108s;
+}
+.lds-roller div:nth-child(3):after {
+  top: 71px;
+  left: 48px;
+}
+.lds-roller div:nth-child(4) {
+  animation-delay: -0.144s;
+}
+.lds-roller div:nth-child(4):after {
+  top: 72px;
+  left: 40px;
+}
+.lds-roller div:nth-child(5) {
+  animation-delay: -0.18s;
+}
+.lds-roller div:nth-child(5):after {
+  top: 71px;
+  left: 32px;
+}
+.lds-roller div:nth-child(6) {
+  animation-delay: -0.216s;
+}
+.lds-roller div:nth-child(6):after {
+  top: 68px;
+  left: 24px;
+}
+.lds-roller div:nth-child(7) {
+  animation-delay: -0.252s;
+}
+.lds-roller div:nth-child(7):after {
+  top: 63px;
+  left: 17px;
+}
+.lds-roller div:nth-child(8) {
+  animation-delay: -0.288s;
+}
+.lds-roller div:nth-child(8):after {
+  top: 56px;
+  left: 12px;
+}
+@keyframes lds-roller {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
 </style>

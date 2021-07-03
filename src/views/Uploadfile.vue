@@ -50,8 +50,9 @@ import router from '../router/index'
             },
             onFileUpload() {
                 check_login()
-                this.state = true;
-                this.status='Please wait'
+                if(this.selectedFile) {
+                  this.state = true;
+                  this.status='Please wait'
                 const formData = new FormData();
                 formData.append("postFile", this.selectedFile);
                 console.log(this.selectedFile);
@@ -60,11 +61,15 @@ import router from '../router/index'
                     await addDataDB(response)
                     this.status = 'File uploaded'
                     this.state=false;
+                    this.selectedFile = '';
                     console.log('uploaded')
                 })
                 .catch((e)=>{
                     console.log(e.message);
                 });
+                } else {
+                  this.status = 'Please select file';
+                } 
             }
         }, 
         created() {

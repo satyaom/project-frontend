@@ -24,6 +24,7 @@
 <script>
     import axios from 'axios';
     import {check_login} from "../services/check_login"
+    import {doc_st} from './Files.vue';
     let st= {state: false}
 
     export default {
@@ -42,18 +43,27 @@
                 if(document.getElementById('num').value)
                   this.status = 'Kindly click tamper'
                 else
-                  this.status = 'Enter File Number and click tamper'
+                  this.status = 'Enter file number and click tamper'
             },
             onFileUpload() {
                 check_login();
-                if(document.getElementById('num').value) {
+                if(this.selectedFile == '') {
+                  this.status = 'Please select file and enter file number'
+                }
+                else if(document.getElementById('num').value=='') {
+                  this.status = 'Enter file number and click tamper'  
+                } else if(parseInt(document.getElementById('num').value) > doc_st.length) {
+                  if(doc_st.length == 0)
+                    this.status = 'Please first verify files';
+                  else if(doc_st.length == 1)
+                    this.status = 'File number should be 1';
+                  else
+                    this.status = `File number should between 1 to ${(doc_st.length)}`;
+                } else {
                   this.number = document.getElementById('num').value;
                   this.state_load=true;
                   this.status = 'Please Wait'
-                }
-                else {
-                  this.status = 'Enter File Number and click tamper'
-                }
+  
                 const formData = new FormData();
                 formData.append("postFile", this.selectedFile);
                 formData.append("number", this.number);
@@ -62,7 +72,7 @@
                 .then(async ()=>{
                     setTimeout(()=>{
                         st.state = true
-                    }, 100);
+                    }, 200);
                     this.status = 'File Tampered'
                     this.state_load = false;
                     console.log('uploaded with no.')
@@ -70,6 +80,7 @@
                 .catch((e)=>{
                     console.log(e.message);
                 });
+                }
             }
         },
         created() {

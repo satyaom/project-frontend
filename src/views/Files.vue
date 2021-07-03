@@ -41,14 +41,16 @@ import axios from 'axios';
 import {putDataDB, getDataDB, isPutData, deleteFile} from '../services/store_files'
 import {st} from '../views/Changefile.vue';
 import {check_login} from "../services/check_login"
-
+var doc_st = {
+  length: 0
+}
 export default {
     name: "file",
     data() {    
         return {
             loading_status: true,
             doc : [],
-            status: ''
+            status: '',
         }    
     },
     methods : {
@@ -77,6 +79,7 @@ export default {
       }
       this.loading_status = false
       this.status = ''
+      doc_st.length = this.doc.length;
     },
     fileLink(file) {
         window.open(`${file}`);
@@ -113,9 +116,11 @@ export default {
         }
         this.status = ''
         this.loading_status = false;
-        
+        doc_st.length = this.doc.length;
     }
 }
+export {doc_st};
+
 </script>
 
 <style scoped>
