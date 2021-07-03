@@ -164,7 +164,7 @@ export {doc_st};
 
 .card {
   border-radius: 20px;
-  padding-top: 10px;
+  padding-top: 0px;
   margin-top: 10px;
   margin-right: 10px;
   margin-left: 10px;
@@ -172,13 +172,13 @@ export {doc_st};
   box-shadow: 0 4px 8px 0 rgba(0,0,0,0.4);
   transition: 0.3s;
   overflow: auto;
-  width: 20vw;
+  width: 22vw;
   height: 500px;
 }
 
 .red_card {
   border-radius: 20px;
-  padding-top: 10px;
+  padding-top: 0px;
   margin-top: 10px;
   margin-right: 10px;
   margin-left: 10px;
@@ -186,7 +186,7 @@ export {doc_st};
   box-shadow: 0 4px 8px 0 rgba(0,0,0,0.4);
   transition: 0.3s;
   overflow: auto;
-  width: 20vw;
+  width: 22vw;
   height: 510px;
   background-color: #fbceb1;
 }
@@ -204,7 +204,7 @@ export {doc_st};
 }
 .messages {
     margin-top: 2%;
-    margin-left: 10%;
+    margin-left: 8%;
     display: flex;
   flex-wrap: wrap;
   padding: 0 4px;
