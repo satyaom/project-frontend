@@ -1,7 +1,7 @@
 <template>
         <div class="overview">
-        <p><b style="color:#f88379"><u>TokenID</u></b> : {{tokenid}}</p><br>
-        <p><b style="color:#f88379"><u>Public Key</u></b> : <br><br>{{pkey}}</p>
+        <p><b style="color:#f88379">TokenID</b> : {{tokenid}}</p><br>
+        <p><b style="color:#f88379">Public Key</b> : <br><br>{{pkey}}</p>
         </div>
 </template>
 
